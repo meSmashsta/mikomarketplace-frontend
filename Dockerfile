@@ -1,9 +1,13 @@
 FROM node:15.5.1
 
-RUN mkdir /usr/src/app 
- 
-WORKDIR /usr/src/app
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
+
+COPY package.json /app/package.json
 
 RUN npm install -g @angular/cli
 
-COPY . .
+RUN npm i @angular-devkit/build-angular
+
+COPY . /app
