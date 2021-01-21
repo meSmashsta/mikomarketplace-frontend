@@ -37,6 +37,8 @@ export class BookFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitEvent.emit(this.bookForm.value);
+    if (! this.bookForm.invalid) {
+      this.submitEvent.emit(this.bookForm.value);
+    }
   }
 }

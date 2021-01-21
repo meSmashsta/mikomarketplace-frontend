@@ -1,0 +1,17 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.my-container .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+}
+  
+.my-container .mat-form-field {
+    width: 220px;
+}
+
+.my-container {
+    margin: 10px auto;
+}

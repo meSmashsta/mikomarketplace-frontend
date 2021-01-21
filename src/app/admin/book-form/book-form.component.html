@@ -1,63 +1,55 @@
-<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
-    <div>
-        <label for="title">
-            Title
-        </label>
-        <input id="title" type="text" formControlName="title">
-    </div>
-    <div>
-        <label for="isbpn">
-            ISBPN
-        </label>
-        <input id="isbpn" type="text" formControlName="isbpn">
-    </div>
-    <div>
-        <label for="author">
-            Author
-        </label>
-        <input id="author" type="text" formControlName="author">
-    </div>
-    <div>
-        <label for="description">
-            Description
-        </label>
-        <input id="description" type="text" formControlName="description">
-    </div>
-    <div>
-        <label for="category">
-            Category
-        </label>
-        <input id="category" type="text" formControlName="category">
-    </div>
-    <div>
-        <label for="edition">
-            Edition
-        </label>
-        <input id="edition" type="text" formControlName="edition">
-    </div>
-    <div>
-        <label for="publisher">
-            Publisher
-        </label>
-        <input id="publisher" type="text" formControlName="publisher">
-    </div>
-    <div>
-        <label for="publishedDate">
-            Published Date
-        </label>
-        <input id="publishedDate" type="text" formControlName="publishedDate">
-    </div>
-    <div>
-        <label for="officialUrl">
-            Official URL
-        </label>
-        <input id="officialUrl" type="text" formControlName="officialUrl">
-    </div>
-    <div>
-        <label for="price">
-            Price
-        </label>
-        <input id="price" type="number" formControlName="price">
-    </div>
-    <button type="submit">Save Changes</button>
-</form>
+<mat-card class="my-container">
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>ISBPN</mat-label>
+                <input matInput formControlName="isbpn" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Author</mat-label>
+                <input matInput formControlName="author" required>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description" required></textarea>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <input matInput formControlName="category" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Edition</mat-label>
+                <input matInput formControlName="edition" required>
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Publishder</mat-label>
+                <input matInput formControlName="publisher" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Published Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="publishedDate" required readonly>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Official Url</mat-label>
+                <input matInput formControlName="officialUrl">
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Price</mat-label>
+                <input matInput type="number" formControlName="price" required>
+            </mat-form-field>
+        </p>
+        <p><button [disabled]="bookForm.invalid" mat-raised-button color="primary" style="float: right">Save Changes</button></p>
+    </form>
+</mat-card>
