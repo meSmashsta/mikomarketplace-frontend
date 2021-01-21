@@ -1,1 +1,17 @@
-<p>book-detail works!</p>
+<div *ngIf="book">
+    <h2>{{ book.title }}</h2>
+
+    <p>{{ book.description }}</p>
+
+    <p><b>ISBPN:</b> {{ book.isbpn }}</p>
+    <p><b>Author:</b> {{ book.author }}</p>
+    <p><b>Description:</b> {{ book.description }}</p>
+    <p><b>Category:</b> {{ book.category }}</p>
+    <p><b>Edition:</b> {{ book.edition }}</p>
+    <p><b>Publisher:</b> {{ book.publisher }}</p>
+    <p><b>Published:</b> {{ book.publishedDate }}</p>
+    <p><b>Official URL:</b> {{ book.officialUrl }}</p>
+    <p><b>Price:</b> {{ book.price }}</p>
+
+    <button (click)="addToCart(book)">Add to Cart</button>
+</div>

@@ -2,14 +2,14 @@
 
 <div *ngFor="let book of books">
     <h3>
-        <a [title]="book.title + ' details'" [routerLink]="['/books', book.id]">
+        <a [title]="book.title + ' details'" [routerLink]="['/books', book._id]">
             {{ book.title }}
         </a>
     </h3>
     <p *ngIf="book.description">
         Description: {{ book.description }}
     </p>
-    <button>
+    <button (click)="addToCart(book)">
         Add To Cart
     </button>
 </div>

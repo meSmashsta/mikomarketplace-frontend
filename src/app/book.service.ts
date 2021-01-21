@@ -8,6 +8,15 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class BookService {
+  API = "http://localhost:3000/book";
 
   constructor(private http: HttpClient) { }
+
+  public all() {
+    return this.http.get(this.API);
+  }
+
+  public get(id: string) {
+    return this.http.get(this.API + '/detail/' + id);
+  }
 }

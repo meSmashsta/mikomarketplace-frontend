@@ -1,0 +1,29 @@
+
+<table>
+    <thead>
+        <th>
+            <tr>
+                <td></td>
+                <td>Item</td>
+                <td>Quantity</td>
+                <td>Price</td>
+            </tr>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of cart">
+            <td>
+                <button (click)="removeItem(item)">x</button>
+            </td>
+            <td>
+                <ul>
+                    <li>{{ item.title }}</li>
+                    <li>{{ item.author }}</li>
+                    <li>{{ item.description }}</li>
+                </ul>
+            </td>
+            <td><button (click)="increaseQuantity(item)">+</button> {{ item.quantity }} <button (click)="decreaseQuantity(item)">-</button></td>
+            <td>{{ item.price }}</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { BookService } from '../book.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-book-detail',
@@ -8,16 +10,27 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookDetailComponent implements OnInit {
 
-  order: any;
+  book: any;
 
   constructor(
-    private route: ActivatedRoute
-  ) {
-    const routeParams = this.route.snapshot.paramMap;
-    const productIdFromRoute = routeParams.get('id');
-  }
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private bookService: BookService,
+    private cartService: CartService
+  ) { }
 
   ngOnInit(): void {
+    const routeParams = this.activeRoute.snapshot.paramMap;
+    const bookId = String(routeParams.get('id'));
+
+    this.bookService.get(bookId).subscribe(book => {
+      this.book = book;
+    });
+  }
+
+  addToCart(book: any) {
+    this.cartService.add(book);
+    this.router.navigate(['/cart']);
   }
 
 }
