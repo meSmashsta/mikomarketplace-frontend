@@ -11,12 +11,39 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
+
+
 @NgModule({
   declarations: [AdminComponent, BooksComponent, BookFormComponent, BookCreateComponent, BookEditComponent, TopBarComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatBadgeModule,
+    MatCardModule
   ]
 })
 export class AdminModule { }

@@ -10,6 +10,8 @@ import { BookService } from 'src/app/book.service';
 export class BooksComponent implements OnInit {
   books:any = [];
 
+  displayedColumns = ['title', 'description', 'isbpn', 'author', 'category', 'edition', 'publisher', 'published', 'url', 'price', 'actions' ];
+
   constructor(
     private router: Router,
     private bookService: BookService
