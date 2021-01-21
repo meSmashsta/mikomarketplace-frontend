@@ -1,30 +1,42 @@
 <app-top-bar></app-top-bar>
 
-<table>
-    <thead>
-        <th>
-            <tr>
-                <td></td>
-                <td>Item</td>
-                <td>Quantity</td>
-                <td>Price</td>
-            </tr>
-        </th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of cart">
-            <td>
-                <button (click)="removeItem(item)">x</button>
-            </td>
-            <td>
-                <ul>
-                    <li>{{ item.title }}</li>
-                    <li>{{ item.author }}</li>
-                    <li>{{ item.description }}</li>
-                </ul>
-            </td>
-            <td><button (click)="increaseQuantity(item)">+</button> {{ item.quantity }} <button (click)="decreaseQuantity(item)">-</button></td>
-            <td>{{ item.price }}</td>
-        </tr>
-    </tbody>
+<table mat-table [dataSource]="cart" class="mat-elevation-z8">
+    <ng-container matColumnDef="item">
+        <th mat-header-cell *matHeaderCellDef> Item </th>
+        <td mat-cell *matCellDef="let book">
+            <ul>
+                <li>
+                    <a [title]="book.title + ' details'" [routerLink]="['/books', book._id]">
+                        {{ book.title }}
+                    </a>
+                </li>
+                <li>{{ book.author }}</li>
+                <li>{{ book.description }}</li>
+            </ul>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let book">
+            <button mat-button (click)="decreaseQuantity(book)">-</button> {{book.quantity}} <button mat-button (click)="increaseQuantity(book)">+</button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> Price </th>
+        <td mat-cell *matCellDef="let book"> {{book.price}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
+        <td mat-cell *matCellDef="let book">
+            <button mat-button color="warn" (click)="removeItem(book)">
+                <mat-icon>delete_outline</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

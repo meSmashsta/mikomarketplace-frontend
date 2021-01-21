@@ -22,6 +22,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatBadgeModule        
+    MatBadgeModule,     
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

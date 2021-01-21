@@ -8,6 +8,8 @@ import { CartService } from '../cart.service';
 })
 export class CartComponent implements OnInit {
   cart:any[] = [];
+  
+  displayedColumns = [ 'item', 'quantity', 'price', 'action' ];
 
   constructor(private cartService: CartService) { }
 
@@ -25,7 +27,8 @@ export class CartComponent implements OnInit {
 
   removeItem(book: any) {
     let index = this.cartService.remove(book);
-    this.cart.splice(index, 1);
+    this.cart = 
+    this.cart = this.cartService.all();
   }
 
 }
