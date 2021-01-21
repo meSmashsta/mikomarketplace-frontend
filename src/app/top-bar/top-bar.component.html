@@ -1,15 +1,15 @@
 <mat-toolbar color="primary">
     <span>Miko's Bookstore</span>
-    <button mat-button>
+    <button mat-button [routerLink]="['/']">
         <mat-icon>library_books</mat-icon>
         Books
     </button>
     <span class="my-spacer"></span>
-    <button mat-button *ngIf="cartItems > 0">
+    <button mat-button *ngIf="cartItems > 0" [routerLink]="['/cart']">
         <mat-icon matBadge="{{ cartItems }}" matBadgeColor="warn">shopping_cart</mat-icon>
         Cart
     </button>
-    <button mat-button *ngIf="cartItems <= 0">
+    <button mat-button *ngIf="cartItems <= 0" [routerLink]="['/cart']">
         <mat-icon>shopping_cart</mat-icon>
         Cart
     </button>
