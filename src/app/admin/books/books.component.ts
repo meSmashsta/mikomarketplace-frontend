@@ -20,11 +20,11 @@ export class BooksComponent implements OnInit {
   }
 
   onClickCreate() {
-    this.router.navigate(['/admin/create']);
+    this.router.navigate(['/admin/books/create']);
   }
 
   onClickEdit(book: any) {
-    this.router.navigate(['/admin/edit', book._id]);
+    this.router.navigate(['/admin/books/edit', book._id]);
   }
 
   onClickDelete(book: any) {
