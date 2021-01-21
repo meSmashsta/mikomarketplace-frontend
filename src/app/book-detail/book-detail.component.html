@@ -1,6 +1,5 @@
 <app-top-bar></app-top-bar>
-
-<div *ngIf="book">
+<mat-card id="details" *ngIf="book">
     <h2>{{ book.title }}</h2>
 
     <p>{{ book.description }}</p>
@@ -12,7 +11,6 @@
     <p><b>Publisher:</b> {{ book.publisher }}</p>
     <p><b>Published:</b> {{ book.publishedDate }}</p>
     <p><b>Official URL:</b> {{ book.officialUrl }}</p>
-    <p><b>Price:</b> {{ book.price }}</p>
-
-    <button (click)="addToCart(book)">Add to Cart</button>
-</div>
+    <p><b>Price:</b> {{ book.price }}</p>   
+    <button mat-raised-button color="accent" (click)="addToCart(book)">Add to Cart</button>
+</mat-card>
