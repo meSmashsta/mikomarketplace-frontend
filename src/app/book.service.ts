@@ -24,7 +24,11 @@ export class BookService {
     return this.http.post(this.API + '/create', book);
   }
 
-  public update(id: String, book: any) {
+  public update(id: string, book: any) {
     return this.http.patch(this.API + '/update/' + id, book);
+  }
+
+  public delete(book: any) {
+    return this.http.delete(this.API + '/delete/' + book._id);
   }
 }

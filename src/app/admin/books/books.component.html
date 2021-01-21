@@ -1,4 +1,5 @@
 <app-top-bar></app-top-bar>
+<button (click)="onClickCreate()">Create</button>
 <table>
     <thead>
         <tr>
@@ -27,7 +28,7 @@
             <td>{{ book.publishedDate }}</td>
             <td>{{ book.officialUrl }}</td>
             <td>{{ book.price }}</td>
-            <td><button>Edit</button> <button>Delete</button></td>
+            <td><button (click)="onClickEdit(book)">Edit</button> <button (click)="onClickDelete(book)">Delete</button></td>
         </tr>
     </tbody>
 </table>
