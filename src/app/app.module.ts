@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { AdminModule } from './admin/admin.module';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksComponent } from './books/books.component';
@@ -25,7 +27,8 @@ import { CartComponent } from './cart/cart.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]
