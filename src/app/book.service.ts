@@ -20,6 +20,10 @@ export class BookService {
     return this.http.get(this.API + '/detail/' + id);
   }
 
+  public create(book: any) {
+    return this.http.post(this.API + '/create', book);
+  }
+
   public update(id: String, book: any) {
     return this.http.patch(this.API + '/update/' + id, book);
   }
