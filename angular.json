@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "mikomarketplace-frontend"
+  "defaultProject": "mikomarketplace-frontend",
+  "cli": {
+    "analytics": "6c61cd01-5480-47e8-b14e-982211f26b41"
+  }
 }
