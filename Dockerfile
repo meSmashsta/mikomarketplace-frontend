@@ -1,4 +1,4 @@
-FROM node:15.5.1
+FROM node:14
 
 WORKDIR /app
 
@@ -8,6 +8,6 @@ COPY package.json /app/package.json
 
 RUN npm install -g @angular/cli
 
-RUN npm i @angular-devkit/build-angular
+RUN npm install --save-dev @angular-devkit/build-angular
 
 COPY . /app
