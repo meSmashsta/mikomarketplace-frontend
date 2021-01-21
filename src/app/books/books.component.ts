@@ -10,6 +10,7 @@ import { CartService } from '../cart.service';
 })
 export class BooksComponent implements OnInit {
   books:any = [];
+  displayedColumns = ['title', 'description', 'author', 'category', 'price', 'actions' ];
 
   constructor(
     private router: Router,

@@ -1,17 +1,41 @@
 <app-top-bar></app-top-bar>
 
-<h2>Products</h2>
+<table mat-table [dataSource]="books" class="mat-elevation-z8">
 
-<div *ngFor="let book of books">
-    <h3>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let book">
         <a [title]="book.title + ' details'" [routerLink]="['/books', book._id]">
-            {{ book.title }}
+          {{ book.title }}
         </a>
-    </h3>
-    <p *ngIf="book.description">
-        Description: {{ book.description }}
-    </p>
-    <button (click)="addToCart(book)">
-        Add To Cart
-    </button>
-</div>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let book"> {{book.description}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="author">
+      <th mat-header-cell *matHeaderCellDef> Author </th>
+      <td mat-cell *matCellDef="let book"> {{book.author}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef> Category </th>
+      <td mat-cell *matCellDef="let book"> {{book.category}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Price </th>
+      <td mat-cell *matCellDef="let book"> {{book.price}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> &nbsp; </th>
+      <td mat-cell *matCellDef="let book"> <button (click)="addToCart(book)" mat-button><mat-icon>add_shopping_cart</mat-icon></button> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

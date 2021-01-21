@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+
+  public cartSizeSubject = new Subject();
 
   constructor() { }
 
@@ -23,6 +26,8 @@ export class CartService {
       item['quantity']++;
       cart[index] = item;
     }
+
+    this.cartSizeSubject.next(this.totalQuantity());
     
     let cartJson = JSON.stringify(cart);
     localStorage.setItem('cart', cartJson);
@@ -33,12 +38,16 @@ export class CartService {
       book['quantity']--;
 
       this.update(book);
+
+      this.cartSizeSubject.next(this.totalQuantity());
     }
   }
 
   public increaseQuantity(book: any) {
-      book['quantity']++;
-      this.update(book);
+    book['quantity']++;
+    this.update(book);
+
+    this.cartSizeSubject.next(this.totalQuantity());
   }
 
   public update(book: any) {
@@ -60,10 +69,24 @@ export class CartService {
     let cartJson = JSON.stringify(cart);
     localStorage.setItem('cart', cartJson);
 
+    this.cartSizeSubject.next(this.totalQuantity());
+
     return index;
+  }
+
+  public totalQuantity() {
+    let cart: any[] = <[]> JSON.parse(localStorage.getItem('cart') ?? '[]');
+    if (cart.length > 0) {
+      return cart.reduce((overall:any, current: any) => {
+        return { quantity: overall.quantity + current.quantity };
+      }).quantity;
+    }
+    return 0;
   }
 
   public clear() {
     localStorage.removeItem('cart');
+    
+    this.cartSizeSubject.next(0);
   }
 }
