@@ -11,5 +11,8 @@ export class BookCreateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
+  onSubmit(book: any) {
+    console.log(book, 'order');
+  }
 }
