@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BookService } from 'src/app/book.service';
 
 @Component({
   selector: 'app-book-edit',
@@ -7,12 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookEditComponent implements OnInit {
 
-  constructor() { }
+  bookId: any;
+  book: any;
+
+  constructor(
+    private router: Router,
+    private activeRoute: ActivatedRoute,
+    private bookService: BookService
+  ) { }
 
   ngOnInit(): void {
+    const routeParams = this.activeRoute.snapshot.paramMap;
+    this.bookId = String(routeParams.get('id'));
+    
+    this.bookService.get(this.bookId).subscribe(book => {
+      this.book = book;
+    });
   }
 
   onSubmit(book: any) {
-    console.log(book, 'order');
+    this.bookService.update(this.bookId, book).subscribe(response => {
+      console.log(response);
+      this.router.navigate(['/admin']);
+    }, err => {
+      console.error(err);
+    });
   }
 }

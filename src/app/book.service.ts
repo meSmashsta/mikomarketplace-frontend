@@ -19,4 +19,8 @@ export class BookService {
   public get(id: string) {
     return this.http.get(this.API + '/detail/' + id);
   }
+
+  public update(id: String, book: any) {
+    return this.http.patch(this.API + '/update/' + id, book);
+  }
 }

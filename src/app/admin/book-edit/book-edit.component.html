@@ -1,3 +1,5 @@
 <app-top-bar></app-top-bar>
 
-<app-book-form (submitEvent)="onSubmit($event)"></app-book-form>
+<div *ngIf="book">
+    <app-book-form [book]="book" (submitEvent)="onSubmit($event)"></app-book-form>
+</div>
